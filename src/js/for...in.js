@@ -3,23 +3,23 @@ export function orderByProps(obj, sortedProps) {
   const remainPart = [];
   const result = [];
 
-  for (const prop of sortedProps) { 
-    if (obj.hasOwnProperty(prop)) { 
+  for (const prop of sortedProps) {
+    if (Object.prototype.hasOwnProperty.call(obj, prop)) { 
       sortedPart.push(prop);
     }
   }
 
   for (const prop in obj) {
-    if (obj.hasOwnProperty(prop) && !sortedPart.includes(prop)) {
+
+    if (Object.prototype.hasOwnProperty.call(obj, prop) && !sortedPart.includes(prop)) {
       remainPart.push(prop);
     }
   }
 
   remainPart.sort();
-
   const finalSort = [...sortedPart, ...remainPart];
 
-  for (const key of finalSort) { 
+  for (const key of finalSort) {
     result.push({ key: key, value: obj[key] });
   }
 
